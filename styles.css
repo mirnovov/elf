@@ -1,0 +1,28 @@
+body:not(.nv-override-pointer) [data-href], 
+body:not(.nv-override-pointer) [data-nv-uid] {
+    cursor: pointer !important
+}
+
+.is-live-preview.cm-s-obsidian .cm-line:not(.cm-active) .cm-formatting-escape {
+    display: none;
+}
+
+.is-live-preview.cm-s-obsidian .cm-line:not(.cm-active) span.cm-comment {
+    visibility: hidden;
+    width: 1px;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.is-live-preview.cm-s-obsidian .cm-formatting-escape {
+    opacity: 0.4;
+}
+
+.is-live-preview.cm-s-obsidian .cm-escape.cm-hmd-escape-char {
+    color: var(--text-normal);
+    opacity: 0.8;
+}
+
+.is-live-preview.cm-s-obsidian .cm-escape.cm-hmd-escape-char.cm-link {
+    color: var(--text-accent);
+}

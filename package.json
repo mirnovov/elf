@@ -1,0 +1,32 @@
+{
+	"name": "obsidian-elf",
+	"version": "0.1.1",
+	"description": "Incorporates limited Reading View functionality into Live Preview mode.",
+	"main": "main.js",
+	"scripts": {
+		"dev": "node esbuild.config.mjs",
+		"build": "node esbuild.config.mjs production"
+	},
+	"keywords": [],
+	"author": "novov",
+	"license": "MIT",
+	"devDependencies": {
+		"@codemirror/language": "^0.19.0",
+		"@codemirror/rangeset": "^0.19.0",
+		"@codemirror/state": "^0.19.0",
+		"@codemirror/stream-parser": "https://github.com/lishid/stream-parser",
+		"@codemirror/view": "^0.19.0",
+		"@types/node": "^16.11.6",
+		"@typescript-eslint/eslint-plugin": "^5.2.0",
+		"@typescript-eslint/parser": "^5.2.0",
+		"builtin-modules": "^3.2.0",
+		"esbuild": "0.13.12",
+		"obsidian": "^0.13.8",
+		"sorted-btree": "^1.6.0",
+		"tslib": "2.3.1",
+		"typescript": "4.4.4"
+	},
+	"dependencies": {
+		"sorted-btree": "^1.6.0"
+	}
+}
