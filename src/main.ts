@@ -1,19 +1,28 @@
-import { LinkCache, MarkdownView, Plugin, debounce, editorEditorField, editorViewField } from "obsidian";
+import { LinkCache, MarkdownView, Plugin, editorEditorField, editorViewField } from "obsidian";
 import { RangeSet, RangeSetBuilder } from "@codemirror/rangeset";
 import { EditorSelection, EditorState } from "@codemirror/state"
 import { EditorView, Decoration, DecorationSet, PluginValue, ViewUpdate, ViewPlugin } from "@codemirror/view";
+import { DEFAULT, ElfSettingTab, ElfSettings  } from "./settings";
 import { syntaxTree } from "@codemirror/language";
 import { tokenClassNodeProp } from "@codemirror/stream-parser";
 
 export default class EnhancedLivePreviewFeatures extends Plugin {	
-	cmPlugin: ViewPlugin<ElfMirror>
+	settings: ElfSettings;
+	cmPlugin: ViewPlugin<ElfMirror>;
 	
 	async onload(): Promise<void> {
+		this.settings = Object.assign({}, DEFAULT, await this.loadData());
+		this.addSettingTab(new ElfSettingTab(this.app, this));
+		
 		this.cmPlugin = ViewPlugin.define(
 			v => new ElfMirror(this, v),
 			{ decorations: v => v.decorations }
 		);
 		this.app.workspace.onLayoutReady(() => this.registerEditorExtension(this.cmPlugin));
+	}
+	
+	async saveSettings() {
+		await this.saveData(this.settings);
 	}
 	
 	internalLink(destination: string): void {
@@ -78,8 +87,10 @@ class ElfMirror implements PluginValue {
 		const viewState = view.getState();
 		this.live = viewState.mode == "source" && !viewState.source;
 		
-		const button = view.containerEl.querySelector(".view-action:first-child") as HTMLElement;
-		button.hidden = this.live;
+		if (this.plugin.settings.hideSwitch) {
+			const button = view.containerEl.querySelector(".view-action:first-child") as HTMLElement;
+			button.hidden = this.live;
+		}
 		
 		if (!this.live) { this.decorations = new RangeSet<Decoration>(); }
 	}
@@ -103,10 +114,6 @@ class ElfMirror implements PluginValue {
 	
 	onLinkHover = (link: Link, state: EditorState): void => {
 		this.expanded = false;
-		
-		//state.field(editorEditorField).dispatch({
-		//	selection: {anchor: link.from, head: link.to}, scrollIntoView: false 
-		//});
 		
 		/*for (let sel of state.selection.ranges) {
 			if (

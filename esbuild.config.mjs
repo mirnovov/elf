@@ -6,7 +6,7 @@ import fs from "fs";
 const prod = (process.argv[2] === 'production');
 
 esbuild.build({
-	entryPoints: ["main.ts"],
+	entryPoints: ["src/main.ts"],
 	bundle: true,
 	external: [
 		"obsidian", 

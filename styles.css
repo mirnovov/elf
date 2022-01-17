@@ -26,3 +26,32 @@ body:not(.nv-override-pointer) [data-nv-uid] {
 .is-live-preview.cm-s-obsidian .cm-escape.cm-hmd-escape-char.cm-link {
     color: var(--text-accent);
 }
+
+.nv-settings-banner {
+    margin: 0 -5px 30px;
+}
+
+.nv-settings-banner .elf {
+    height: 130px;
+    fill: none;
+    stroke: #d64700;
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 1.5;
+    stroke-width: 5px
+}
+
+.nv-settings-banner .elf .i {
+    fill: #d64700;
+    stroke-width: 0px;
+}
+
+.theme-dark .nv-settings-banner .elf {
+    stroke: #75415c;
+}
+
+.theme-dark .nv-settings-banner .elf .i {
+    fill: #bb6893;
+}
