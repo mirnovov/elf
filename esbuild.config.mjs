@@ -2,8 +2,17 @@ import esbuild from "esbuild";
 import process from "process";
 import builtins from "builtin-modules";
 import fs from "fs";
+import { dirname } from "path";
 
-const prod = (process.argv[2] === 'production');
+const prod = (process.argv[2] === "production");
+const outPath = (process.argv[2] != undefined && !prod) ? process.argv[2] : "./out/main.js";
+const outDir = dirname(outPath);
+
+if (!fs.existsSync(outDir)) fs.mkdirSync(outDir);
+
+["styles.css", "manifest.json"].forEach(file => {
+	fs.copyFile(`./${file}`, `./${outDir}/${file}`, e => { if (e) throw e });
+});
 
 esbuild.build({
 	entryPoints: ["src/main.ts"],
@@ -25,11 +34,5 @@ esbuild.build({
 	logLevel: "info",
 	sourcemap: prod ? false : "inline",
 	treeShaking: true,
-	outfile: (process.argv[2] != undefined && !prod) ? process.argv[2] : "out/main.js"
+	outfile: outPath
 }).catch(e => { throw e });
-
-if (prod) {
-	["styles.css", "manifest.json"].forEach(file => {
-		fs.copyFile(`./${file}`, `./out/${file}`, e => { if (e) throw e });
-	});
-}
