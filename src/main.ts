@@ -115,12 +115,12 @@ class ElfMirror implements PluginValue {
 	onLinkHover = (link: Link, state: EditorState): void => {
 		this.expanded = false;
 		
-		/*for (let sel of state.selection.ranges) {
+		for (let sel of state.selection.ranges) {
 			if (
 				(sel.from >= link.from && sel.from <= link.to) || 
 				(sel.to >= link.from && sel.to <= link.to)
 			) this.expanded = true;
-		}*/
+		}
 		
 		this.plugin.overridePointer(this.expanded);
 	}

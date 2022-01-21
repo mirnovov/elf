@@ -5,7 +5,11 @@ Incorporates limited Reading View functionality into <a href="https://obsidian.m
 <br>
 <p align="center"><img src="media/demo.gif"></p>
 
-Currently, behavior supported in Live Preview includes some link interactions (including clicking without holding down Ctrl/Cmd), minor rendering changes, and unfocusing on note open. 
+Currently, behavior supported in Live Preview includes:
+
+* Some link interactions (including clicking without holding down Ctrl/Cmd). Links can still be edited when the cursor is within their bounds.
+* Minor rendering changes to appear visually closer to Reading mode.
+* Unfocusing on note open. This also includes deselecting text where possible so it doesn't show the Markdown syntax.
 
 This plugin is somewhat experimental - due to the workarounds that are used to make this plugin function, maximum compatibilty is not guaranteed. Nevertheless, if you experience problems, please report it as an issue.
 

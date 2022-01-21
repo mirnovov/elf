@@ -1,7 +1,7 @@
 {
 	"id": "elf",
 	"name": "Enhanced Live Preview Features",
-	"version": "0.2",
+	"version": "0.3",
 	"minAppVersion": "0.13.8",
 	"description": "Incorporates limited Reading View functionality into Live Preview mode.",
 	"author": "novov",
