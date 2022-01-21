@@ -15,4 +15,12 @@ This plugin is somewhat experimental - due to the workarounds that are used to m
 
 ### Installation
 
-You can either obtain the plugin using Obsidian's built-in browser, or install it manually by putting it in your vault's `.obsidian/plugins` folder. If doing the latter, you'll need to run `npm i` in the plugin directory to initialise the npm package and download required sources. Then execute `npm run build`, which will compile the package's TypeScript files into JavaScript.
+The easiest way to install ELF is to use Obsidian's built-in plugin browser - or for pre-release versions, a tool such as [BRAT](https://github.com/TfTHacker/obsidian42-brat). 
+
+But if you've a developer, you can install it manually: download the directory and initialise sources using `npm install`. Once installed, you can get ESBuild to rebuild the plugin every time you've changed something:
+
+```bash	
+npm dev path/to/test/vault/.obsidian/plugins/elf/main.js
+```
+
+You can also run `npm run build` to create production sources in an `./out` folder. These can then be copied to `path/to/vault/.obsidian/plugins/elf` in your vault to use as a plugin.
