@@ -14,6 +14,8 @@ export default class EnhancedLivePreviewFeatures extends Plugin {
 		this.settings = Object.assign({}, DEFAULT, await this.loadData());
 		this.addSettingTab(new ElfSettingTab(this.app, this));
 		
+		this.setBodyClass("nv-hide-comments", this.settings.hideComments);
+		
 		this.cmPlugin = ViewPlugin.define(
 			v => new ElfMirror(this, v),
 			{ decorations: v => v.decorations }
@@ -33,8 +35,8 @@ export default class EnhancedLivePreviewFeatures extends Plugin {
 		window.open(destination, "_blank");
 	}
 	
-	overridePointer(set: boolean): void {
-		document.body.classList[set ? "add" : "remove"]("nv-override-pointer");
+	setBodyClass(bodyClass: string, set: boolean): void {
+		document.body.classList[set ? "add" : "remove"](bodyClass);
 	}
 	
 	generateUid(): string {
@@ -122,7 +124,7 @@ class ElfMirror implements PluginValue {
 			) this.expanded = true;
 		}
 		
-		this.plugin.overridePointer(this.expanded);
+		this.plugin.setBodyClass("nv-override-pointer", this.expanded);
 	}
 	
 	onLinkClick = (link: Link, state: EditorState): void => {
@@ -234,7 +236,7 @@ class ElfMirror implements PluginValue {
 			el.setAttribute("data-nv-done","");
 			el.addEventListener("click", () => this.onLinkClick(link, view.state));
 			el.addEventListener("mouseover", () => this.onLinkHover(link, view.state));
-			el.addEventListener("mouseleave", () => this.plugin.overridePointer(true));
+			el.addEventListener("mouseleave", () => this.plugin.setBodyClass("nv-override-pointer", true));
 		});
 	}
 }

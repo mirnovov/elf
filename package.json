@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-elf",
-	"version": "0.3",
+	"version": "0.4",
 	"description": "Incorporates limited Reading View functionality into Live Preview mode.",
 	"main": "main.js",
 	"scripts": {

@@ -1,17 +1,14 @@
+/* --- Pointer --- */
+
 body:not(.nv-override-pointer) [data-href], 
 body:not(.nv-override-pointer) [data-nv-uid] {
     cursor: pointer !important
 }
 
+/* --- Escapes --- */
+
 .is-live-preview.cm-s-obsidian .cm-line:not(.cm-active) .cm-formatting-escape {
     display: none;
-}
-
-.is-live-preview.cm-s-obsidian .cm-line:not(.cm-active) span.cm-comment {
-    visibility: hidden;
-    width: 1px;
-    white-space: nowrap;
-    display: inline-block;
 }
 
 .is-live-preview.cm-s-obsidian .cm-formatting-escape {
@@ -26,6 +23,32 @@ body:not(.nv-override-pointer) [data-nv-uid] {
 .is-live-preview.cm-s-obsidian .cm-escape.cm-hmd-escape-char.cm-link {
     color: var(--text-accent);
 }
+
+/* --- Comment hiding --- */
+
+.is-live-preview.cm-s-obsidian .cm-line:not(.cm-active) span.cm-comment {
+    width: 25px;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: bottom;
+    overflow: hidden;
+}
+
+.is-live-preview.cm-s-obsidian .cm-line:not(.cm-active) span.cm-comment:before  {
+    width: 25px;
+    content: "<!>";
+}
+
+.nv-hide-comments .is-live-preview.cm-s-obsidian .cm-line:not(.cm-active) span.cm-comment {
+    visibility: hidden;
+    width: 0.1px;
+}
+
+.nv-hide-comments .is-live-preview.cm-s-obsidian .cm-line:not(.cm-active) span.cm-comment:before {
+    display: none;
+}
+
+/* --- Settings banner --- */
 
 .nv-settings-banner {
     margin: 0 -5px 30px;
