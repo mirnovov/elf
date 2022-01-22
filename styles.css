@@ -26,25 +26,31 @@ body:not(.nv-override-pointer) [data-nv-uid] {
 
 /* --- Comment hiding --- */
 
-.is-live-preview.cm-s-obsidian .cm-line:not(.cm-active) span.cm-comment {
-    width: 25px;
+.is-live-preview.cm-s-obsidian .cm-line:not(.cm-active) span.cm-comment,
+.is-live-preview.cm-s-obsidian .cm-line:not(.cm-active) span.cm-comment:before {
     white-space: nowrap;
     display: inline-block;
     vertical-align: bottom;
     overflow: hidden;
 }
 
-.is-live-preview.cm-s-obsidian .cm-line:not(.cm-active) span.cm-comment:before  {
-    width: 25px;
-    content: "<!>";
-}
-
-.nv-hide-comments .is-live-preview.cm-s-obsidian .cm-line:not(.cm-active) span.cm-comment {
+.is-live-preview.cm-s-obsidian .cm-line:not(.cm-active) span.cm-comment {
     visibility: hidden;
     width: 0.1px;
 }
 
-.nv-hide-comments .is-live-preview.cm-s-obsidian .cm-line:not(.cm-active) span.cm-comment:before {
+body:not(.nv-hide-comments) .is-live-preview.cm-s-obsidian .cm-line:not(.cm-active) span.cm-comment,
+body:not(.nv-hide-comments) .is-live-preview.cm-s-obsidian .cm-line:not(.cm-active) span.cm-comment:before {
+    visibility: visible;
+    width: 25px;
+}
+
+body:not(.nv-hide-comments) .is-live-preview.cm-s-obsidian .cm-line:not(.cm-active) span.cm-comment:before {
+    content: "<!>";
+    text-align: center;
+}
+
+.is-live-preview.cm-s-obsidian .cm-line:not(.cm-active) span.cm-comment + span.cm-comment {
     display: none;
 }
 
