@@ -1,3 +1,5 @@
+**This plugin has been archived as much of its functionality is being implemented in base Obsidian. For more information, see [here](https://github.com/obsidianmd/obsidian-releases/pull/732).**
+
 <p align="center"><img width="375" height="187" alt="ELF - Enhanced Live Preview" src="media/elf.png"></p>
 <p align="center">
 Incorporates limited Reading View functionality into <a href="https://obsidian.md">Obsidian</a>'s Live Preview mode, allowing you to use it for both reading and editing.
